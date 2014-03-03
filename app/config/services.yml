@@ -1,0 +1,6 @@
+services:
+
+    varveeService:
+        class: Ronnieutd\FiverBundle\Services\Varvee
+        calls:
+            - [ setContainer, [ @service_container ] ]

@@ -1,0 +1,61 @@
+<h2><b>High Fiver App</b></h2>
+
+<div align="center">
+    <h1>{{ playerInfo.playerName }}</h1>
+    <h1>{{ playerInfo.playerSchool }}</h1>
+    <h1>{{ playerInfo.playerLocation }}</h1>
+
+
+    <table border="1" cellpadding="1">
+        <tr>
+            <th></th>
+            <th>Opponent</th>
+            <th>Player Score</th>
+            <th>Team Score</th>
+            <th>W/L</th>
+        </tr>
+
+        {% set count = 0 %}
+        {% for game in playerInfo.games %}
+        {% set count = count + 1 %}
+        <tr>
+            <td>Game {{ count }}</td>
+            <td>{{ game.opponent }}</td>
+            <td>{{ game.points }}</td>
+            <td>{{ game.teamPoints }}</td>
+            <td>{{ game.outcome }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Game', 'Team Score', 'Player Score'],
+                    {% spaceless %}
+                        {% set count = 0 %}
+                        {% for game in playerInfo.games %}
+                            {% set count = count + 1 %}
+                            ['Game {{ count }}',
+                            {% if game.teamPoints == '-' %}0{% else %}{{ game.teamPoints }}{% endif %},
+                            {% if game.points == '-' %}0{% else %}{{ game.points }}{% endif %}]{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                    {% endspaceless %}
+                ]);
+
+                var options = {
+                    title: ''
+                };
+
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+            }
+        </script>
+
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+</div>

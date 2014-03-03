@@ -1,0 +1,95 @@
+<h2><b>High Fiver App: Testing Methodology</b></h2>
+
+<p>
+    I am comfortable writing unit tests and functional tests using PHPUnit.
+    I would write basic unit tests for each operation of my objects, whether that is
+    Doctrine ORM objects or objects used by the code base.
+</p>
+<p>
+    I am comfortable configuring phpunit options, and setting up test suites for each part of
+    the application and for the whole application.  I also am comfortable enabling xDebug to
+    work in phpunit command line as well, so I can troubleshoot failing tests live.
+</p>
+<p>
+    I have also used SeleniumHQ / Selenium RC to script out recorded steps and validation
+    points for my application, and am comfortable with 
+</p>
+
+Here's the phpunit.xml configuration file from the last project I worked on.
+
+<hr noshade>
+<tt>phpunit.xml</tt>
+<hr noshade>
+<pre><code>
+        &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+        &lt;!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html --&gt;
+        &lt;phpunit
+        backupGlobals               = &quot;false&quot;
+        backupStaticAttributes      = &quot;false&quot;
+        cacheTokens                 = &quot;false&quot;
+        colors                      = &quot;true&quot;
+        convertErrorsToExceptions   = &quot;true&quot;
+        convertNoticesToExceptions  = &quot;true&quot;
+        convertWarningsToExceptions = &quot;true&quot;
+        processIsolation            = &quot;false&quot;
+        stopOnFailure               = &quot;false&quot;
+        syntaxCheck                 = &quot;true&quot;
+        bootstrap                   = &quot;bootstrap.php.cache&quot; &gt;
+
+        &lt;!-- can be run with phpunit ~~testsuite &lt;pattern&gt; --&gt;
+        &lt;testsuites&gt;
+        &lt;testsuite name=&quot;all&quot;&gt;
+        &lt;directory&gt;../src/ClientName/WebBundle/Tests&lt;/directory&gt;
+        &lt;/testsuite&gt;
+        &lt;testsuite name=&quot;command&quot;&gt;
+        &lt;directory&gt;../src/ClientName/WebBundle/Tests/Command&lt;/directory&gt;
+        &lt;/testsuite&gt;
+        &lt;testsuite name=&quot;controller&quot;&gt;
+        &lt;directory&gt;../src/ClientName/WebBundle/Tests/Controller&lt;/directory&gt;
+        &lt;/testsuite&gt;
+        &lt;testsuite name=&quot;entity&quot;&gt;
+        &lt;directory&gt;../src/ClientName/WebBundle/Tests/Entity&lt;/directory&gt;
+        &lt;/testsuite&gt;
+        &lt;testsuite name=&quot;eventlistener&quot;&gt;
+        &lt;directory&gt;../src/ClientName/WebBundle/Tests/EventListener&lt;/directory&gt;
+        &lt;/testsuite&gt;
+        &lt;testsuite name=&quot;persistence&quot;&gt;
+        &lt;directory&gt;../src/ClientName/WebBundle/Tests/Persistence&lt;/directory&gt;
+        &lt;/testsuite&gt;
+        &lt;testsuite name=&quot;repository&quot;&gt;
+        &lt;directory&gt;../src/ClientName/WebBundle/Tests/Repository&lt;/directory&gt;
+        &lt;/testsuite&gt;
+        &lt;testsuite name=&quot;services&quot;&gt;
+        &lt;directory&gt;../src/ClientName/WebBundle/Tests/Services&lt;/directory&gt;
+        &lt;/testsuite&gt;
+        &lt;/testsuites&gt;
+
+        &lt;php&gt;
+        &lt;env name=&quot;DEBUG&quot; value=&quot;true&quot;/&gt;
+
+        &lt;ini name=&quot;xdebug.default_enable&quot; value=&quot;0&quot; /&gt;
+        &lt;ini name=&quot;xdebug.remote_autostart&quot; value=&quot;0&quot; /&gt;
+        &lt;ini name=&quot;xdebug.remote_enable&quot; value=&quot;0&quot; /&gt;
+        &lt;ini name=&quot;xdebug.overload_var_dump&quot; value=&quot;0&quot; /&gt;
+        &lt;ini name=&quot;xdebug.show_mem_delta&quot; value=&quot;0&quot; /&gt;
+        &lt;ini name=&quot;xdebug.max_nesting_level&quot; value=&quot;1000&quot; /&gt;
+        &lt;/php&gt;
+
+        &lt;filter&gt;
+        &lt;whitelist&gt;
+        &lt;directory&gt;../src&lt;/directory&gt;
+        &lt;exclude&gt;
+        &lt;directory&gt;../src/*/*Bundle/Resources&lt;/directory&gt;
+        &lt;directory&gt;../src/*/*Bundle/Tests&lt;/directory&gt;
+        &lt;directory&gt;../src/*/Bundle/*Bundle/Resources&lt;/directory&gt;
+        &lt;directory&gt;../src/*/Bundle/*Bundle/Tests&lt;/directory&gt;
+        &lt;/exclude&gt;
+        &lt;/whitelist&gt;
+        &lt;/filter&gt;
+
+        &lt;/phpunit&gt;
+
+
+    </code></pre>
+<hr noshade>

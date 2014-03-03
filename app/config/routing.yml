@@ -1,0 +1,15 @@
+ronnieutd_fiver:
+    resource: "@RonnieutdFiverBundle/Resources/config/routing.yml"
+    prefix:   /
+
+homepage:
+    pattern:  /
+    defaults: { _controller: RonnieutdFiverBundle:Default:index }
+
+player:
+    pattern:  /player/{sportId}/{playerId}
+    defaults: { _controller: RonnieutdFiverBundle:Default:player }
+
+testing:
+    pattern:  /testing
+    defaults: { _controller: RonnieutdFiverBundle:Default:testing }

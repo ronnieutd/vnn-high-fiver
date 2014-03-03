@@ -1,0 +1,7 @@
+parameters:
+#    ronnieutd_fiver.example.class: Ronnieutd\FiverBundle\Example
+
+services:
+#    ronnieutd_fiver.example:
+#        class: %ronnieutd_fiver.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
